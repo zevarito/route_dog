@@ -1,0 +1,9 @@
+--- 
+users: 
+  new: get
+  edit: get
+  destroy: delete
+  index: get
+  show: get
+  create: post
+  update: put
