@@ -12,9 +12,11 @@ module RouteDog
       def call(env)
         @env = env
 
-        store_route
+        status, headers, response = @app.call(env)
 
-        @app.call(env)
+        store_route if status.to_i < 400
+
+        [status, headers, response]
       end
 
       def self.config_file
