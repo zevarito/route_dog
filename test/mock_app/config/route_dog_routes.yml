@@ -1,9 +1,20 @@
 --- 
 users: 
-  new: get
-  edit: get
-  destroy: delete
-  index: get
-  show: get
-  create: post
-  update: put
+  new: 
+  - get
+  edit: 
+  - get
+  destroy: 
+  - delete
+  show: 
+  - get
+  index: 
+  - get
+  create: 
+  - post
+  update: 
+  - put
+sessions: 
+  logout: 
+  - get
+  - delete
