@@ -57,6 +57,7 @@ MockApp::Application.routes.draw do
   # match ':controller(/:action(/:id(.:format)))'
 
   resources :users
+  resources :products
   resources :sessions, :only => [] do
     member do
       get     'logout'

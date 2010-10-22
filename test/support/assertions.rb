@@ -19,3 +19,13 @@ def assert_watched_routes_not_include(controller, action, method = :get)
     assert true
   end
 end
+
+def assert_notify_for(controller, action, method = :get)
+  html_notification = Nokogiri::HTML(response.body).search('div#route_dog_warning')
+  assert html_notification.any?, "Expected {:controller => :#{controller}, :action => :#{action}, :method => :#{method}} Notify That The Route Has Not Tests"
+end
+
+def assert_not_notify_for(controller, action, method = :get)
+  html_notification = Nokogiri::HTML(response.body).search('div#route_dog_warning')
+  assert !html_notification.any?, "Expected {:controller => :#{controller}, :action => :#{action}, :method => :#{method}} To Not Notify That The Route Has Not Tests"
+end

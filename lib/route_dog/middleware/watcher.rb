@@ -1,6 +1,3 @@
-require 'rack'
-require File.join(Rails.root, 'config/routes.rb')
-
 module RouteDog
   module Middleware
     class Watcher < RouteDog
@@ -26,7 +23,7 @@ module RouteDog
         @watched_routes[identify_controller][identify_action] ||= []
         @watched_routes[identify_controller][identify_action] << request_method.to_s
         @watched_routes[identify_controller][identify_action].uniq!
-        File.open(Watcher.config_file, "w") {|file| file.puts(@watched_routes.to_yaml) }
+        File.open(Watcher.config_file, "w+") {|file| file.puts(@watched_routes.to_yaml) }
       rescue ActionController::RoutingError
         false
       end

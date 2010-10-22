@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'ruby-debug'
 require 'contest'
+require 'nokogiri'
 
 ENV['RAILS_ENV'] = 'test'
 ENV['RAILS_ROOT'] = File.join(File.dirname(__FILE__), 'mock_app')

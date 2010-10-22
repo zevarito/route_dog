@@ -1,4 +1,9 @@
 --- 
+products: 
+  new: 
+  - get
+  index: 
+  - get
 users: 
   new: 
   - get
@@ -14,7 +19,3 @@ users:
   - post
   update: 
   - put
-sessions: 
-  logout: 
-  - get
-  - delete
