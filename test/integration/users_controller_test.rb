@@ -79,6 +79,14 @@ class UsersControllerTest < ActionController::IntegrationTest
         delete '/users/1'
         assert_watched_routes_include(:users, :destroy, :delete)
       end
+
+      context "Duplicated Routes" do
+        test "routes should not be duplicated in the watched list" do
+          get '/users/1/edit'
+          get '/users/1/edit'
+          assert_watched_routes_include(:users, :destroy, :delete)
+        end
+      end
     end
   end
 end
