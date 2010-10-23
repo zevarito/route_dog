@@ -26,7 +26,7 @@ module RouteDog
         <<-EOT
           <div style="display: block; height:70px;"></div>
           <div id="route_dog_warning" style="display: block; width: 100%; height: 70px; text-align: center; margin:0; position:absolute; top:0; background: red; font-size: 18px; font-weight: bold">
-            <h1 style="color: #fff;">The Route -- Has Not Integrational Tests!</h1>
+            <h1 style="color: #fff; font-size: 20px; margin: 20px 0 35px">The Route -- Has Not Integrational Tests!</h1>
           </div>
         EOT
       end
