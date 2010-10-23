@@ -13,17 +13,18 @@ Gem::Specification.new do |s|
   s.description = %q{Watch and Notify your not tested routes of a RoR Application}
   s.email = %q{zevarito@gmail.com}
   s.extra_rdoc_files = [
-    "README.textile"
+    "README.md"
   ]
   s.files = [
     ".gitignore",
-     "README.textile",
+     "README.md",
      "Rakefile",
      "VERSION",
      "lib/route_dog.rb",
      "lib/route_dog/middleware/notifier.rb",
      "lib/route_dog/middleware/route_dog.rb",
      "lib/route_dog/middleware/watcher.rb",
+     "route_dog.gemspec",
      "test/integration/products_controller_test.rb",
      "test/integration/sessions_controller.rb",
      "test/integration/users_controller_test.rb",
