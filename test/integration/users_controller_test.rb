@@ -7,13 +7,6 @@ class UsersControllerTest < ActionController::IntegrationTest
   end
 
   context "Watcher Middleware" do
-    context "Non Existent Routes" do
-      test "dummy#index" do
-        get '/dummy'
-        assert_watched_routes_not_include(:dummy, :index, :get)
-      end
-    end
-
     context "Not Tested Routes" do
       test "users#index" do
         assert_watched_routes_not_include(:users, :index, :get)
