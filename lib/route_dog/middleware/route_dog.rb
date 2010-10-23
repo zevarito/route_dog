@@ -1,9 +1,13 @@
 require 'rack'
-require File.join(Rails.root, 'config/routes.rb')
 
 module RouteDog
   module Middleware
     class RouteDog
+      def initialize(app)
+        require File.join(Rails.root, 'config/routes.rb')
+        initialize_yaml_file
+      end
+
       def self.config_file
         File.join(Rails.root, 'config', 'route_dog_routes.yml')
       end
@@ -15,7 +19,7 @@ module RouteDog
       end
 
       def request_path
-        @env['REQUEST_URI']
+        @env['PATH_INFO']
       end
 
       def request_method

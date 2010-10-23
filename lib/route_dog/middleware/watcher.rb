@@ -3,7 +3,7 @@ module RouteDog
     class Watcher < RouteDog
       def initialize(app)
         @app = app
-        initialize_yaml_file
+        super
       end
 
       def call(env)

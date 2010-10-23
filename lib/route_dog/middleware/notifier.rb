@@ -3,7 +3,7 @@ module RouteDog
     class Notifier < RouteDog
       def initialize(app)
         @app = app
-        initialize_yaml_file
+        super
       end
 
       def call(env)
@@ -24,8 +24,8 @@ module RouteDog
 
       def warning_html
         <<-EOT
-          <div id='route_dog_warning'>
-            <h1>The Route -- Has Not Integrational Tests!</h1>
+          <div id="route_dog_warning" style="display: block; width: 100%; height: 100px; text-align: center; color: red; font-size: 18px; font-weight: bold">
+            <h1 style="color: #fff;">The Route -- Has Not Integrational Tests!</h1>
           </div>
         EOT
       end
