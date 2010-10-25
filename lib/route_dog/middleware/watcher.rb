@@ -23,7 +23,7 @@ module RouteDog
         @watched_routes[identify_controller][identify_action] ||= []
         @watched_routes[identify_controller][identify_action] << request_method.to_s
         @watched_routes[identify_controller][identify_action].uniq!
-        File.open(Watcher.config_file, "w+") {|file| file.puts(@watched_routes.to_yaml) }
+        write_watched_routes
       rescue ActionController::RoutingError
         false
       end

@@ -21,6 +21,7 @@ Gem::Specification.new do |s|
      "Rakefile",
      "VERSION",
      "lib/route_dog.rb",
+     "lib/route_dog/middleware.rb",
      "lib/route_dog/middleware/notifier.rb",
      "lib/route_dog/middleware/route_dog.rb",
      "lib/route_dog/middleware/watcher.rb",

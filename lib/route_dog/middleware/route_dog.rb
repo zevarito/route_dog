@@ -3,19 +3,11 @@ require 'rack'
 module RouteDog
   module Middleware
     class RouteDog
+
+      include ::RouteDog
+
       def initialize(app)
-        require File.join(Rails.root, 'config/routes.rb')
-        initialize_yaml_file
-      end
-
-      def self.config_file
-        File.join(Rails.root, 'config', 'route_dog_routes.yml')
-      end
-
-      def initialize_yaml_file
-        @watched_routes = YAML.load_file(Watcher.config_file)
-      rescue Errno::ENOENT
-        @watched_routes = {}
+        load_watched_routes
       end
 
       def request_path
@@ -35,7 +27,7 @@ module RouteDog
       end
 
       def route_tested?
-        initialize_yaml_file
+        load_watched_routes
         begin
           @watched_routes[identify_controller.to_s][identify_action.to_s].include?(request_method.to_s)
         rescue
