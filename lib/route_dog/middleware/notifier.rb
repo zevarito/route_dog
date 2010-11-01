@@ -3,7 +3,6 @@ module RouteDog
     class Notifier < RouteDog
       def initialize(app)
         @app = app
-        super
       end
 
       def call(env)
@@ -11,10 +10,12 @@ module RouteDog
 
         status, headers, @response = @app.call(env)
 
-        append_warning if !route_tested?
+        append_warning if !::RouteDog.route_tested?(identify_controller, identify_action, request_method)
 
         [status, headers, @response]
       end
+
+    private
 
       def append_warning
         @response.each do |part|
