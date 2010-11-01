@@ -56,24 +56,38 @@ def report_template
     <html>
       <head>
         <style type="text/css">
+          body { margin: 0; padding: 0; font:13.34px helvetica,arial,freesans,clean,sans-serif; }
+          h1 { background: red; color: #fff; display: block; height: 70px; padding: 10px; width: 100%; }
+          table#routes { width: 100%; margin: 0 20px; }
+          table#routes th, table#routes td { text-align: left; padding: 5px; }
+          table#routes tr:nth-child(odd) { background: #eee;}
+          div#route_stats {}
+          span.yes { color: green; font-weight: bold }
+          span.no { color: red; font-weight: bold }
+          div#route_stats { background: #444; color: #fff; padding: 0 0 0 25px; height: 40px; position: absolute; top: 50px; width: 100%; border-bottom: solid 4px #666 }
+          div#route_stats span { margin: 0 50px 0 10px; color: #fff; font-weight: bold; }
         </style>
       </head>
       <body>
         <h1>Route Dog - <%= Rails.application.class %> - Routes Report</h1>
-        <table>
+        <table id="routes">
         <tr><th>Method</th><th>Path</th><th>Action</th><th>Implemented</th><th>Tested</th></tr>
         <% @defined_routes.each do |route| %>
           <tr>
             <td><%= route.verb %></td>
             <td><%= route.path %></td>
             <td><%= route.requirements[:controller] + '#' + route.requirements[:action] %></td>
-            <td><%= implemented_route?(route) ? "YES" : "NO" %></td>
-            <td><%= tested_route?(route) ? "YES" : "NO" %></td>
+            <td><%= implemented_route?(route) ? "<span class='yes'>YES</span>" : "<span class='no'>NO</span>" %></td>
+            <td><%= tested_route?(route) ? "<span class='yes'>YES</span>" : "<span class='no'>NO</span>" %></td>
         <% end %>
         </table>
-        <p>Routes Defined: <%= @defined_routes.size %><p>
-        <p>Routes Implemented: <%= @implemented_routes.size %><p>
-        <p>Routes Tested: <%= @tested_routes.size %><p>
+        <div id="route_stats">
+          <p>
+            <strong>Defined:</strong> <span class="value"><%= @defined_routes.size %></span>
+            <strong>Implemented:</strong> <span class="value"><%= @implemented_routes.size %></span>
+            <strong>Tested:</strong> <span class="value"><%= @tested_routes.size %></span>
+          <p>
+        </div>
       </body>
     </html>
   EOT
