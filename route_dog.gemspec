@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Alvaro Gil"]
-  s.date = %q{2010-10-25}
+  s.date = %q{2010-11-01}
   s.description = %q{Watch and Notify your not tested routes of a RoR Application, it also has a simple report about Routes defines, used and tested}
   s.email = %q{zevarito@gmail.com}
   s.extra_rdoc_files = [
@@ -25,9 +25,10 @@ Gem::Specification.new do |s|
      "lib/route_dog/middleware/notifier.rb",
      "lib/route_dog/middleware/route_dog.rb",
      "lib/route_dog/middleware/watcher.rb",
+     "lib/tasks/route_dog_tasks.rake",
      "route_dog.gemspec",
      "test/integration/products_controller_test.rb",
-     "test/integration/sessions_controller.rb",
+     "test/integration/sessions_controller_test.rb",
      "test/integration/users_controller_test.rb",
      "test/mock_app/.gitignore",
      "test/mock_app/Gemfile",
@@ -35,7 +36,7 @@ Gem::Specification.new do |s|
      "test/mock_app/Rakefile",
      "test/mock_app/app/controllers/application_controller.rb",
      "test/mock_app/app/controllers/products_controller.rb",
-     "test/mock_app/app/controllers/sessions_controller_test.rb",
+     "test/mock_app/app/controllers/sessions_controller.rb",
      "test/mock_app/app/controllers/users_controller.rb",
      "test/mock_app/app/helpers/application_helper.rb",
      "test/mock_app/app/views/layouts/application.html.erb",
@@ -71,6 +72,7 @@ Gem::Specification.new do |s|
      "test/mock_app/public/javascripts/rails.js",
      "test/mock_app/public/robots.txt",
      "test/mock_app/public/stylesheets/.gitkeep",
+     "test/mock_app/tmp/.gitignore",
      "test/support/assertions.rb",
      "test/test_helper.rb"
   ]
@@ -82,11 +84,11 @@ Gem::Specification.new do |s|
   s.summary = %q{Watch and Notify your not tested routes of a RoR Application}
   s.test_files = [
     "test/integration/products_controller_test.rb",
-     "test/integration/sessions_controller.rb",
+     "test/integration/sessions_controller_test.rb",
      "test/integration/users_controller_test.rb",
      "test/mock_app/app/controllers/application_controller.rb",
      "test/mock_app/app/controllers/products_controller.rb",
-     "test/mock_app/app/controllers/sessions_controller_test.rb",
+     "test/mock_app/app/controllers/sessions_controller.rb",
      "test/mock_app/app/controllers/users_controller.rb",
      "test/mock_app/app/helpers/application_helper.rb",
      "test/mock_app/config/application.rb",

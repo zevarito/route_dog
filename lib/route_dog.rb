@@ -15,7 +15,7 @@ module RouteDog
 
   def self.route_tested?(controller, action, method)
     begin
-      load_watched_routes[controller.to_s][action.to_s].include?(method.to_s)
+      load_watched_routes[controller.to_s.downcase][action.to_s.downcase].include?(method.to_s.downcase)
     rescue
       false
     end
