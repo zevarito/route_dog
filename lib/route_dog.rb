@@ -1,3 +1,5 @@
+require 'route_dog/middleware'
+
 module RouteDog
   def self.config_file
     File.join(Rails.root, 'config', 'route_dog_routes.yml')
