@@ -11,7 +11,7 @@ class SessionsControllerTest < ActionController::IntegrationTest
       get "/sessions/1/logout"
       delete "/sessions/1/logout"
 
-      assert_watched_routes_include(:sessions, :logout, :delete)
+      assert_watched_routes_include(:sessions, :logout, :get)
       assert_watched_routes_include(:sessions, :logout, :delete)
     end
   end
