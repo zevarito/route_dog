@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{route_dog}
-  s.version = "2.2.0"
+  s.version = "2.1.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Alvaro Gil"]
@@ -35,6 +35,8 @@ Gem::Specification.new do |s|
      "test/mock_app/Gemfile",
      "test/mock_app/Gemfile.lock",
      "test/mock_app/Rakefile",
+     "test/mock_app/app/controllers/admin/blogs/posts_controller.rb",
+     "test/mock_app/app/controllers/admin/users_controller.rb",
      "test/mock_app/app/controllers/application_controller.rb",
      "test/mock_app/app/controllers/products_controller.rb",
      "test/mock_app/app/controllers/sessions_controller.rb",
@@ -75,7 +77,8 @@ Gem::Specification.new do |s|
      "test/mock_app/public/stylesheets/.gitkeep",
      "test/mock_app/tmp/.gitignore",
      "test/support/assertions.rb",
-     "test/test_helper.rb"
+     "test/test_helper.rb",
+     "test/unit/route_dog_test.rb"
   ]
   s.homepage = %q{http://github.com/zevarito/route_dog}
   s.rdoc_options = ["--charset=UTF-8"]
@@ -87,6 +90,8 @@ Gem::Specification.new do |s|
     "test/integration/products_controller_test.rb",
      "test/integration/sessions_controller_test.rb",
      "test/integration/users_controller_test.rb",
+     "test/mock_app/app/controllers/admin/blogs/posts_controller.rb",
+     "test/mock_app/app/controllers/admin/users_controller.rb",
      "test/mock_app/app/controllers/application_controller.rb",
      "test/mock_app/app/controllers/products_controller.rb",
      "test/mock_app/app/controllers/sessions_controller.rb",
@@ -107,7 +112,8 @@ Gem::Specification.new do |s|
      "test/mock_app/config/routes.rb",
      "test/mock_app/db/seeds.rb",
      "test/support/assertions.rb",
-     "test/test_helper.rb"
+     "test/test_helper.rb",
+     "test/unit/route_dog_test.rb"
   ]
 
   if s.respond_to? :specification_version then
