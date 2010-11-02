@@ -1,5 +1,5 @@
 require "rake/testtask"
-import "lib/tasks/route_dog_tasks.rake"
+import "lib/tasks/tasks.rake"
 
 begin
   require 'jeweler'

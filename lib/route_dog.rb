@@ -1,4 +1,5 @@
 require 'route_dog/middleware'
+require 'route_dog/railtie' if defined?(Rails)
 
 module RouteDog
   def self.config_file

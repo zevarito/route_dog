@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{route_dog}
-  s.version = "2.1.0"
+  s.version = "2.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Alvaro Gil"]
-  s.date = %q{2010-11-01}
+  s.date = %q{2010-11-02}
   s.description = %q{Watch and Notify your not tested routes of a RoR Application, it also has a simple report about Routes defines, used and tested}
   s.email = %q{zevarito@gmail.com}
   s.extra_rdoc_files = [
@@ -25,7 +25,8 @@ Gem::Specification.new do |s|
      "lib/route_dog/middleware/notifier.rb",
      "lib/route_dog/middleware/route_dog.rb",
      "lib/route_dog/middleware/watcher.rb",
-     "lib/tasks/route_dog_tasks.rake",
+     "lib/route_dog/railtie.rb",
+     "lib/tasks/tasks.rake",
      "route_dog.gemspec",
      "test/integration/products_controller_test.rb",
      "test/integration/sessions_controller_test.rb",
