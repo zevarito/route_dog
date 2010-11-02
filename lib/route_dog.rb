@@ -25,6 +25,6 @@ module RouteDog
   end
 
   def self.constantize_controller_str(controller)
-    controller.split("/").map{|c| c.capitalize}.join("::").concat("Controller").constantize
+    controller.split("/").map{|c| c.split("_").map{|cc| cc.capitalize}.join }.join("::").concat("Controller").constantize
   end
 end

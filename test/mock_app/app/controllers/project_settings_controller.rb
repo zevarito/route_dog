@@ -1,0 +1,2 @@
+class ProjectSettingsController < ApplicationController
+end
