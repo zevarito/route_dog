@@ -47,7 +47,7 @@ def find_or_instantiate_controller_for(route)
   if @instantiated_controllers.has_key?(requirements[:controller])
     @instantiated_controllers[requirements[:controller]]
   else
-    @instantiated_controllers[requirements[:controller]] = eval("#{requirements[:controller].capitalize}Controller.new")
+    @instantiated_controllers[requirements[:controller]] = RouteDog.constantize_controller_str(requirements[:controller]).new
   end
 end
 

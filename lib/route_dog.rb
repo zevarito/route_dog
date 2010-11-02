@@ -23,4 +23,8 @@ module RouteDog
       false
     end
   end
+
+  def self.constantize_controller_str(controller)
+    controller.split("/").map{|c| c.capitalize}.join("::").concat("Controller").constantize
+  end
 end
