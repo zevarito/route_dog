@@ -5,18 +5,20 @@
 
 Gem::Specification.new do |s|
   s.name = %q{route_dog}
-  s.version = "2.1.1"
+  s.version = "2.1.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Alvaro Gil"]
-  s.date = %q{2010-11-02}
+  s.date = %q{2010-11-03}
   s.description = %q{Watch and Notify your not tested routes of a RoR Application, it also has a simple report about Routes defines, used and tested}
   s.email = %q{zevarito@gmail.com}
   s.extra_rdoc_files = [
-    "README.md"
+    "LICENSE",
+     "README.md"
   ]
   s.files = [
     ".gitignore",
+     "LICENSE",
      "README.md",
      "Rakefile",
      "VERSION",
@@ -57,10 +59,10 @@ Gem::Specification.new do |s|
      "test/mock_app/config/initializers/backtrace_silencers.rb",
      "test/mock_app/config/initializers/inflections.rb",
      "test/mock_app/config/initializers/mime_types.rb",
-     "test/mock_app/config/initializers/route_dog.rb",
      "test/mock_app/config/initializers/secret_token.rb",
      "test/mock_app/config/initializers/session_store.rb",
      "test/mock_app/config/locales/en.yml",
+     "test/mock_app/config/route_dog.yml",
      "test/mock_app/config/routes.rb",
      "test/mock_app/db/seeds.rb",
      "test/mock_app/public/404.html",
@@ -110,7 +112,6 @@ Gem::Specification.new do |s|
      "test/mock_app/config/initializers/backtrace_silencers.rb",
      "test/mock_app/config/initializers/inflections.rb",
      "test/mock_app/config/initializers/mime_types.rb",
-     "test/mock_app/config/initializers/route_dog.rb",
      "test/mock_app/config/initializers/secret_token.rb",
      "test/mock_app/config/initializers/session_store.rb",
      "test/mock_app/config/routes.rb",
@@ -127,6 +128,7 @@ Gem::Specification.new do |s|
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<rack>, [">= 0"])
       s.add_runtime_dependency(%q<rails>, [">= 2.3.8"])
+      s.add_runtime_dependency(%q<launchy>, ["= 0.3.7"])
       s.add_development_dependency(%q<contest>, ["= 0.1.2"])
       s.add_development_dependency(%q<nokogiri>, ["= 1.4.3.1"])
     else
@@ -134,12 +136,14 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<rails>, [">= 2.3.8"])
       s.add_dependency(%q<contest>, ["= 0.1.2"])
       s.add_dependency(%q<nokogiri>, ["= 1.4.3.1"])
+      s.add_dependency(%q<launchy>, ["= 0.3.7"])
     end
   else
     s.add_dependency(%q<rack>, [">= 0"])
     s.add_dependency(%q<rails>, [">= 2.3.8"])
     s.add_dependency(%q<contest>, ["= 0.1.2"])
     s.add_dependency(%q<nokogiri>, ["= 1.4.3.1"])
+    s.add_dependency(%q<launchy>, ["= 0.3.7"])
   end
 end
 
