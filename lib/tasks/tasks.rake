@@ -4,10 +4,12 @@ namespace :route_dog do
   desc "Clean Tested Routes File"
   task :clean do
     File.delete("test/mock_app/config/route_dog_routes.yml") if File.exists? "test/mock_app/config/route_dog_routes.yml"
+    puts "\nRoute Dog tested routes definition file deleted."
   end
 
   desc "Create A Html Report Of The Routes Defined, Tested And Used"
   task :report => :environment do
+    puts "\nCreate A Html Report Of The Routes Defined, Tested And Used\n"
     @implemented_routes = []
     @tested_routes = []
     @defined_routes = Rails.application.routes.routes
@@ -60,20 +62,31 @@ def report_template
     <html>
       <head>
         <style type="text/css">
-          body { margin: 0; padding: 0; font:13.34px helvetica,arial,freesans,clean,sans-serif; }
-          h1 { background: red; color: #fff; display: block; height: 70px; padding: 10px; width: 100%; }
-          table#routes { width: 100%; margin: 0 20px; }
+          html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+          a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp,
+          small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset,
+          form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+          margin: 0; padding: 0; border: 0; outline: 0; font-size: 100%; vertical-align: baseline; background: transparent;}
+
+          body { margin: 0; padding: 0; font:15.34px helvetica,arial,freesans,clean,sans-serif; }
+          #header { background: red; color: #fff; display: block; height: 70px; }
+          h1 { font-size: 18px; padding: 10px 0 0 25px; }
+          table#routes { width: 100%; padding: 40px 25px 0; }
           table#routes th, table#routes td { text-align: left; padding: 5px; }
           table#routes tr:nth-child(odd) { background: #eee;}
           div#route_stats {}
           span.yes { color: green; font-weight: bold }
           span.no { color: red; font-weight: bold }
-          div#route_stats { background: #444; color: #fff; padding: 0 0 0 25px; height: 40px; position: absolute; top: 50px; width: 100%; border-bottom: solid 4px #666 }
+          div#route_stats { background: #444; color: #fff; height: 30px; position: absolute; top: 50px; width: 100%; border-bottom: solid 4px #666 }
+          div#route_stats p { padding: 10px 0 0 25px; }
           div#route_stats span { margin: 0 50px 0 10px; color: #fff; font-weight: bold; }
+          div#route_stats span.zero_routes { background: #666; padding: 2px; 5px; }
         </style>
       </head>
       <body>
-        <h1>Route Dog - <%= Rails.application.class %> - Routes Report</h1>
+        <div id="header">
+          <h1>Route Dog - <%= Rails.application.class.to_s.gsub(/::/, ' ') %> - Routes Report</h1>
+        </div>
         <table id="routes">
         <tr><th>Method</th><th>Path</th><th>Action</th><th>Implemented</th><th>Tested</th></tr>
         <% @defined_routes.each do |route| %>
@@ -90,6 +103,7 @@ def report_template
             <strong>Defined:</strong> <span class="value"><%= @defined_routes.size %></span>
             <strong>Implemented:</strong> <span class="value"><%= @implemented_routes.size %></span>
             <strong>Tested:</strong> <span class="value"><%= @tested_routes.size %></span>
+              <% if @tested_routes.size == 0 %><span class="zero_routes">You have 0 routes tested, may be you should run your Integrational Tests First!</span><% end %>
           <p>
         </div>
       </body>
