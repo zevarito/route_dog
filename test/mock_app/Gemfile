@@ -29,4 +29,5 @@ gem 'ruby-debug'
 #   gem 'webrat'
 # end
 
+gem 'route_dog', :path => File.join(File.dirname(__FILE__), "..", "..")
 gem 'launchy'

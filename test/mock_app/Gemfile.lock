@@ -1,3 +1,10 @@
+PATH
+  remote: /Users/zevarito/Sources/zevarito/route_dog
+  specs:
+    route_dog (2.1.1)
+      rack
+      rails (>= 2.3.8)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -82,5 +89,6 @@ PLATFORMS
 DEPENDENCIES
   launchy
   rails (= 3.0.1)
+  route_dog!
   ruby-debug
   sqlite3-ruby
