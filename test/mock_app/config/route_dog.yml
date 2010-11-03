@@ -1,0 +1,8 @@
+---
+watcher:
+  env:
+    - test
+notifier:
+  env:
+    - test
+    - development
