@@ -1,6 +1,8 @@
 RouteDog for Ruby on Rails
 ==========================
 
+**It only works in Rails 3 for now, Rails 2.3 support is comming.**
+
 RouteDog is a small collection of Rack middlewares to be used with your Ruby On Rails project as a helper to identify not tested routes.
 
 The way that RouteDog knows if you are testing a route is through the Watcher middleware which only runs in Test Environment
@@ -28,8 +30,6 @@ Usage
 -----
 
 ### Instalation ###
-
-    sudo gem install route_dog
 
 If you are using Bundler
 
@@ -67,6 +67,7 @@ very uncommon, but here is the command.
 TODO
 ----
 
+* Rails 2.3 support.
 * Show Notifier warnings for other than regular html responses.
 * Generator to extract route_dog.yml config file, so you can disable the middlewares you don't want.
 
