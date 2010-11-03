@@ -4,9 +4,11 @@ RouteDog for Ruby on Rails
 RouteDog is a small collection of Rack middlewares to be used with your Ruby On Rails project as a helper to identify not tested routes.
 
 The way that RouteDog knows if you are testing a route is through the Watcher middleware which only runs in Test Environment
-and collects the routes that you've called from your Integrational Tests (See Note About Integrational Tests).
+and collects the routes that you've called from your **Integrational Tests** (See Note About Integrational Tests).
 
 The way that RouteDog shows to you a warning is through a middleware called Notifier which only runs in Developement Enviroment.
+
+Also it has a report task that give to you a resume about defined, implemented and tested routes of your application.
 
 
 For What This Is Useful?
@@ -25,38 +27,62 @@ the coverage results but you want to live the experience using the application a
 Usage
 -----
 
-Fetch the gem
+### Instalation ###
 
     sudo gem install route_dog
 
-Create a file RAILS_ROOT/config/initializers/route_dog.rb and put the lines below (see notes)
+If you are using Bundler
 
-    Rails.application.config.middleware.use RouteDog::Middleware::Watcher  if Rails.env.test?
+    gem 'route_dog'
 
-    Rails.application.config.middleware.use RouteDog::Middleware::Notifier if Rails.env.development?
+If you are not using Bundler
 
-Run your Integrational Tests
+    config.gem 'route_dog'
 
-Run your application in Development Mode
+
+### Get a report of defined, implemented and tested routes ###
+
+Run your *Integrational Tests* and then call a report
+
+    rake route_dog:report
+
+![Route Report Example](http://img.skitch.com/20101103-p79s1css147a6tymt1i6mcanm7.jpg "Route Report Example")
+
+
+### Browsing your application in Development ###
+
+This will be appended to your application response
+
+![Notifier Example](http://img.skitch.com/20101103-trxeweg66jh931qtpunh9u91gk.jpg "Notifier Example")
+
+
+### Clean collected tested routes ###
+
+This is useful if you had a test passing and then you remove the test from your codebase,
+very uncommon, but here is the command.
+
+    rake route_dog:clean
+
 
 TODO
 ----
 
 * Show Notifier warnings for other than regular html responses.
-* Rake task to show stadistics about routes defined, used and tested.
-* Blocker middleware to disallow not tested routes in Production Environment.
-* Blocker middleware also should remove from your page response links to not tested resources.
+* Generator to extract route_dog.yml config file, so you can disable the middlewares you don't want.
 
 Notes
 -----
 
-* Watcher middleware don't work with Controller Tests, it only works with Integrational Tests except if you are running RSpec, because RSpec
-controller tests are an extension of Integrational Tests, but this will be not longer supported by RSpec.
+* Watcher middleware don't work with Controller Tests, it only works with Integrational Tests.
 
-* Watcher and Notifier middlewares may need be loaded after or before another middleware, that is the case if you are using Warden.
 
-    `Rails.application.config.middleware.insert_before Warden::Manager, RouteDog::Middleware::Watcher  if Rails.env.test?`
+Copyright
+---------
 
-    `Rails.application.config.middleware.insert_before Warden::Manager, RouteDog::Middleware::Notifier if Rails.env.development?`
+Copyright © 2010 Alvaro Gil. See LICENSE for details.
 
-* Be sure to call `rake route_dog:clean` once in a while to ensure that the tested route list remains updated.
+
+Thanks
+------
+
+dcadenas, foca and spastorino for beign responsive to my questions.
