@@ -6,7 +6,7 @@ RouteDog for Ruby on Rails
 RouteDog is a small collection of Rack middlewares to be used with your Ruby On Rails project as a helper to identify not tested routes.
 
 The way that RouteDog knows if you are testing a route is through the Watcher middleware which only runs in Test Environment
-and collects the routes that you've called from your **Integrational Tests** (See Note About Integrational Tests).
+and collects the routes that you've called from your **Integration Tests** (See Note About Integration Tests).
 
 The way that RouteDog shows to you a warning is through a middleware called Notifier which only runs in Developement Enviroment.
 
@@ -23,7 +23,7 @@ the coverage results but you want to live the experience using the application a
 
 * You were a Rumble Guy that thought that tests were not necessary? ok, may be this is for you if you don't want to drop all your code.
 
-* Even if you are not planning to write Integrational Tests you can take advantage of the route defined, tested and used report.
+* Even if you are not planning to write Integration Tests you can take advantage of the route defined, tested and used report.
 
 
 Usage
@@ -42,7 +42,7 @@ If you are not using Bundler
 
 ### Get a report of defined, implemented and tested routes ###
 
-Run your *Integrational Tests* and then call a report
+Run your *Integration Tests* and then call a report
 
     rake route_dog:report
 
@@ -74,7 +74,7 @@ TODO
 Notes
 -----
 
-* Watcher middleware don't work with Controller Tests, it only works with Integrational Tests.
+* Watcher middleware don't work with Controller Tests, it only works with Integration Tests.
 
 
 Copyright
