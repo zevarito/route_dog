@@ -1,4 +1,8 @@
-require "launchy"
+begin
+  require "launchy"
+rescue LoadError => e
+  puts "Install launchy gem to automatically open the report in your browser"
+end
 
 namespace :route_dog do
   desc "Clean Tested Routes File"
@@ -21,7 +25,7 @@ end
 def save_and_open_report_in_browser(html_report)
   path = File.join(Rails.root, "tmp", Rails.application.class.to_s.gsub(":", "").concat("RoutesReport.html").underscore)
   File.open(path, "w+") {|file| file.puts(html_report) }
-  Launchy::Browser.run(path)
+  defined?(Launchy) ? Launchy::Browser.run(path) : puts("The report was saved in: #{path}")
 end
 
 def implemented_route?(route)
