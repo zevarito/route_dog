@@ -76,6 +76,19 @@ Notes
 
 * Watcher middleware don't work with Controller Tests, it only works with Integration Tests.
 
+DEVELOPMENT
+-----------
+
+If you are planning to contribute to this gem, please read the following advice.
+
+Once you have pulled the source code do this...
+
+    cd test/mock_app
+    bundle install
+
+Then you can run the tests...
+
+    rake
 
 Copyright
 ---------

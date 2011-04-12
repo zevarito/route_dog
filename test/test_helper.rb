@@ -1,5 +1,4 @@
 require 'rubygems'
-require 'ruby-debug'
 require 'contest'
 require 'nokogiri'
 
