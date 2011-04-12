@@ -13,7 +13,7 @@ def assert_watched_routes_not_include(controller, action, method = :get)
     routes = YAML.load_file(RouteDog::Middleware::RouteDog.config_file)
     routes[controller.to_s][action.to_s].include?(method.to_s)
     assert false
-  rescue Test::Unit::AssertionFailedError
+  rescue ActiveSupport::TestCase::Assertion
     assert false, "Expected Watched Routes To Not include {:controller => :#{controller}, :action => :#{action}, :method => :#{method}}."
   rescue
     assert true
