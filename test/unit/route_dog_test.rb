@@ -22,4 +22,21 @@ class RouteDogTest < Test::Unit::TestCase
       assert_equal Admin::Blogs::PostsController, RouteDog.constantize_controller_str("admin/blogs/posts")
     end
   end
+
+  context "Identify tested routes" do
+
+    def write_tested_routes_yaml(hash)
+      File.open(RouteDog.config_file, "w+") {|file| file.puts(hash.to_yaml) }
+    end
+
+    test "identify routes that respond to get method" do
+      write_tested_routes_yaml("products" => {"index" => ["get"]})
+      assert_equal true, RouteDog.route_tested?(:products, :index, :get)
+    end
+
+    test "identify routes that respond to any method" do
+      write_tested_routes_yaml("products" => {"index" => ["get"]})
+      assert_equal true, RouteDog.route_tested?(:products, :index, nil)
+    end
+  end
 end

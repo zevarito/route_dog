@@ -16,9 +16,11 @@ module RouteDog
     File.open(config_file, "w+") {|file| file.puts(routes.to_yaml) }
   end
 
+  # When method.nil? it respond to all methods.
   def self.route_tested?(controller, action, method)
     begin
-      load_watched_routes[controller.to_s.downcase][action.to_s.downcase].include?(method.to_s.downcase)
+      available_methods = load_watched_routes[controller.to_s.downcase][action.to_s.downcase]
+      method.nil? ? available_methods.any? : available_methods.include?(method.to_s.downcase)
     rescue
       false
     end
