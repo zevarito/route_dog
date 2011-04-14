@@ -22,9 +22,13 @@ rescue LoadError
 end
 
 desc "Default: run tests"
-task :default => :test
+task :default => [:test, :report]
 
 task :test => "route_dog:clean"
+
+task :report do
+  `cd test/mock_app && rake route_dog:report`
+end
 
 Rake::TestTask.new do |t|
   t.libs << "lib" << "test"
