@@ -64,7 +64,12 @@ module RouteDog
     end
 
     def implemented_route?(route)
-      find_or_instantiate_controller_for(route).respond_to?(route.requirements[:action])
+      controller = find_or_instantiate_controller_for(route)
+      if route.requirements.has_key?(:action)
+        controller.respond_to?(route.requirements[:action])
+      else
+        controller.class.instance_methods(false).any?
+      end
     end
 
     def find_or_instantiate_controller_for(route)

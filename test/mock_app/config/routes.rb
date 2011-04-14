@@ -64,4 +64,6 @@ MockApp::Application.routes.draw do
       delete  'logout'
     end
   end
+
+  match '/pages/:action', :controller => 'pages', :as => 'page'
 end
