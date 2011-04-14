@@ -10,7 +10,7 @@ module RouteDog
 
         status, headers, @response = @app.call(env)
 
-        append_warning if !::RouteDog.route_tested?(identify_controller, identify_action, request_method)
+        append_warning if !::RouteDog.route_tested_with_requirements?(identify_controller, identify_action, request_method)
 
         [status, headers, @response]
       end

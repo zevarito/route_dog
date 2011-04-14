@@ -18,7 +18,7 @@ module RouteDog
   end
 
   # When method.nil? it respond to all methods.
-  def self.route_tested?(controller, action, method)
+  def self.route_tested_with_requirements?(controller, action, method)
     begin
       available_methods = load_watched_routes[controller.to_s.downcase][action.to_s.downcase]
       method.nil? ? available_methods.any? : available_methods.include?(method.to_s.downcase)
@@ -27,7 +27,16 @@ module RouteDog
     end
   end
 
+  def self.route_tested?(route)
+    requirements = route.requirements
+    route_tested_with_requirements?(requirements[:controller], requirements[:action], route.verb)
+  end
+
   def self.constantize_controller_str(controller)
     controller.split("/").map{|c| c.split("_").map{|cc| cc.capitalize}.join }.join("::").concat("Controller").constantize
+  end
+
+  def self.action_string_for_route(route)
+    "#{route.requirements[:controller]}##{route.requirements[:action]}"
   end
 end

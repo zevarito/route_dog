@@ -1,15 +1,19 @@
+require 'ostruct'
+
 module RouteDog
+
   class Report
 
     def initialize
-      @implemented_routes = []
-      @tested_routes = []
       @defined_routes = Rails.application.routes.routes
     end
 
     def generate
-      clean_routes
-      save_and_open_report_in_browser(template.result(binding))
+      remove_not_user_routes!
+      map_routes_as_structs!
+      calculate_totals
+      save_report(template.result(binding))
+      open_report_in_browser
     end
 
     def self.generate
@@ -18,7 +22,7 @@ module RouteDog
 
     private
 
-    def clean_routes
+    def remove_not_user_routes!
       @defined_routes.reject! { |r| r.path =~ %r{/rails/info/properties} } # Skip the route if it's internal info route
     end
 
@@ -26,29 +30,41 @@ module RouteDog
       ERB.new(File.open(File.join(File.dirname(__FILE__), "templates", "report.html.erb")).read)
     end
 
-    def save_and_open_report_in_browser(html_report)
-      path = File.join(Rails.root, "tmp", Rails.application.class.to_s.gsub(":", "").concat("RoutesReport.html").underscore)
-      File.open(path, "w+") {|file| file.puts(html_report) }
-      defined?(Launchy) ? Launchy::Browser.run(path) : puts("The report was saved in: #{path}")
+    def map_routes_as_structs!
+      @defined_routes.map! do |route|
+        r = OpenStruct.new
+        r.verb = route.verb
+        r.path = route.path
+        r.action = RouteDog.action_string_for_route(route)
+        r.tested = RouteDog.route_tested?(route)
+        r.implemented = implemented_route?(route)
+        r
+      end
+    end
+
+    def calculate_totals
+      @implemented_routes_count = @defined_routes.select {|route| route.implemented }.size
+      @tested_routes_count      = @defined_routes.select {|route| route.tested }.size
+    end
+
+    def save_report(html_report)
+      File.open(report_file, "w+") do |file|
+        file.puts(html_report)
+      end
+
+      puts("The report was saved in: #{report_file}")
+    end
+
+    def open_report_in_browser
+      Launchy::Browser.run(report_file) if defined?(Launchy)
+    end
+
+    def report_file
+      File.join(Rails.root, "tmp", Rails.application.class.to_s.gsub(":", "").concat("RoutesReport.html").underscore)
     end
 
     def implemented_route?(route)
-      if find_or_instantiate_controller_for(route).respond_to?(route.requirements[:action])
-        @implemented_routes << route
-        true
-      else
-        false
-      end
-    end
-
-    def tested_route?(route)
-      requirements = route.requirements
-      if RouteDog.route_tested?(requirements[:controller], requirements[:action], route.verb)
-        @tested_routes << route
-        true
-      else
-        false
-      end
+      find_or_instantiate_controller_for(route).respond_to?(route.requirements[:action])
     end
 
     def find_or_instantiate_controller_for(route)

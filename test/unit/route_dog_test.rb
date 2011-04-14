@@ -31,12 +31,12 @@ class RouteDogTest < Test::Unit::TestCase
 
     test "identify routes that respond to get method" do
       write_tested_routes_yaml("products" => {"index" => ["get"]})
-      assert_equal true, RouteDog.route_tested?(:products, :index, :get)
+      assert_equal true, RouteDog.route_tested_with_requirements?(:products, :index, :get)
     end
 
     test "identify routes that respond to any method" do
       write_tested_routes_yaml("products" => {"index" => ["get"]})
-      assert_equal true, RouteDog.route_tested?(:products, :index, nil)
+      assert_equal true, RouteDog.route_tested_with_requirements?(:products, :index, nil)
     end
   end
 end

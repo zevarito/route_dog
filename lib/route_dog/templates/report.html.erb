@@ -32,17 +32,19 @@
       <tr>
         <td><%= route.verb %></td>
         <td><%= route.path %></td>
-        <td><%= "#{route.requirements[:controller]}##{route.requirements[:action]}" %></td>
-        <td><%= implemented_route?(route) ? "<span class='yes'>YES</span>" : "<span class='no'>NO</span>" %></td>
-        <td><%= tested_route?(route) ? "<span class='yes'>YES</span>" : "<span class='no'>NO</span>" %></td>
+        <td><%= route.action %></td>
+        <td><%= route.implemented ? "<span class='yes'>YES</span>" : "<span class='no'>NO</span>" %></td>
+        <td><%= route.tested ? "<span class='yes'>YES</span>" : "<span class='no'>NO</span>" %></td>
     <% end %>
     </table>
     <div id="route_stats">
       <p>
         <strong>Defined:</strong> <span class="value"><%= @defined_routes.size %></span>
-        <strong>Implemented:</strong> <span class="value"><%= @implemented_routes.size %></span>
-        <strong>Tested:</strong> <span class="value"><%= @tested_routes.size %></span>
-          <% if @tested_routes.size == 0 %><span class="zero_routes">You have 0 routes tested, may be you should run your Integrational Tests First!</span><% end %>
+        <strong>Implemented:</strong> <span class="value"><%= @implemented_routes_count %></span>
+        <strong>Tested:</strong> <span class="value"><%= @tested_routes_count %></span>
+        <% if @tested_routes_count == 0 %>
+          <span class="zero_routes">You have 0 routes tested, may be you should run your Integrational Tests First!</span>
+        <% end %>
       <p>
     </div>
   </body>
