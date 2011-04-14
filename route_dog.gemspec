@@ -29,6 +29,7 @@ Gem::Specification.new do |s|
      "lib/route_dog/middleware/watcher.rb",
      "lib/route_dog/railtie.rb",
      "lib/tasks/tasks.rake",
+     "lib/tasks/report.html.erb",
      "route_dog.gemspec",
      "test/integration/products_controller_test.rb",
      "test/integration/sessions_controller_test.rb",
