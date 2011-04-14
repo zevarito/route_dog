@@ -4,7 +4,7 @@ require 'route_dog/railtie' if defined?(Rails)
 
 module RouteDog
   def self.config_file
-    File.join(Rails.root, 'config', 'route_dog_routes.yml')
+    File.join(Rails.root, 'tmp', 'route_dog_routes.yml')
   end
 
   def self.load_watched_routes
