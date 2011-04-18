@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{route_dog}
-  s.version = "2.4.2"
+  s.version = "2.4.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Alvaro Gil"]
-  s.date = %q{2011-04-14}
+  s.date = %q{2011-04-18}
   s.description = %q{Watch and Notify your not tested routes of a RoR Application, it also has a simple report about Routes defines, used and tested}
   s.email = %q{zevarito@gmail.com}
   s.extra_rdoc_files = [
