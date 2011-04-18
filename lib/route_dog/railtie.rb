@@ -22,7 +22,7 @@ module RouteDog
     end
 
     def route_dog_configuration
-      YAML.load_file(File.join(Rails.root, 'config', 'middlewares_route_dog.yml'))
+      YAML.load_file(RouteDog.config_file)
     rescue Errno::ENOENT
       {"watcher" => {"env" => ["test"]}, "notifier" => {"env" => ["development"]}}
     end

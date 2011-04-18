@@ -26,7 +26,7 @@ class RouteDogTest < Test::Unit::TestCase
   context "Identify tested routes" do
 
     def write_tested_routes_yaml(hash)
-      File.open(RouteDog.config_file, "w+") {|file| file.puts(hash.to_yaml) }
+      File.open(RouteDog.watched_routes_file, "w+") {|file| file.puts(hash.to_yaml) }
     end
 
     test "identify routes that respond to get method" do

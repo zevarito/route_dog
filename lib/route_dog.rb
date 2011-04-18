@@ -4,17 +4,25 @@ require 'route_dog/railtie' if defined?(Rails)
 
 module RouteDog
   def self.config_file
+    File.join(Rails.root, 'config', 'middlewares_route_dog.yml')
+  end
+
+  def self.watched_routes_file
     File.join(Rails.root, 'tmp', 'route_dog_routes.yml')
   end
 
   def self.load_watched_routes
-    YAML.load_file(config_file)
+    YAML.load_file(watched_routes_file)
   rescue Errno::ENOENT
     {}
   end
 
   def self.write_watched_routes(routes)
-    File.open(config_file, "w+") {|file| file.puts(routes.to_yaml) }
+    File.open(watched_routes_file, "w+") {|file| file.puts(routes.to_yaml) }
+  end
+
+  def self.delete_watched_routes_file
+    File.delete(watched_routes_file) if File.exists?(watched_routes_file)
   end
 
   # When method.nil? it respond to all methods.
