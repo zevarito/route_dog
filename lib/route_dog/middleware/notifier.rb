@@ -8,11 +8,13 @@ module RouteDog
       def call(env)
         @env = env
 
-        status, headers, @response = @app.call(env)
+        @status, @headers, @response = @app.call(env)
 
-        append_warning if !::RouteDog.route_tested_with_requirements?(identify_controller, identify_action, request_method)
+        if is_html_response? && !tested_action?
+          append_warning
+        end
 
-        [status, headers, @response]
+        [@status, @headers, @response]
       end
 
     private
