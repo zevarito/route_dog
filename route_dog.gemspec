@@ -2,7 +2,7 @@ files = ['README.md', 'LICENSE', 'Rakefile', 'route_dog.gemspec', '{test,lib}/**
 
 Gem::Specification.new do |s|
   s.name = "route_dog"
-  s.version = "2.4.3"
+  s.version = "2.5.0"
   s.author = "Alvaro Gil"
   s.date = "2011-04-18"
   s.description = "Watch and Notify your not tested routes of a RoR Application, it also has a simple report about Routes defines, used and tested"
