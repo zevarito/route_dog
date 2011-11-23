@@ -33,7 +33,7 @@ module RouteDog
       end
 
       def is_html_response?
-        headers["Content-Type"].include?("text/html")
+        headers["Content-Type"].include?("text/html") if headers.has_key?("Content-Type")
       end
 
       def tested_action?
